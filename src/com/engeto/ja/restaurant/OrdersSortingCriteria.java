@@ -1,7 +1,8 @@
 package com.engeto.ja.restaurant;
 
-public enum OrderSortingCriteria {
-    NAME,
-    LAST_WATERING,
-    TESTING
+public enum OrdersSortingCriteria {
+    TABLE_NUMBER,
+    ORDERED_TIME,
+    FULFILMENT_TIME,
+    TOTAL_PRICE
 }
