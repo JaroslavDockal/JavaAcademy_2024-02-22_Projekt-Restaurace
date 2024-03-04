@@ -1,30 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb4085bb-1772-4609-a5a5-ddb628c14fd1" name="Changes" comment="" />
+    <list default="true" id="fb4085bb-1772-4609-a5a5-ddb628c14fd1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/CookBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/CookBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Dish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Dish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/FileOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/FileOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/OrderItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/OrdersSortingCriteria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/OrdersSortingCriteria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/RestaurantException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/RestaurantException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/RestaurantManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/RestaurantManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Settings.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2d8gYMP3Z1ItPbJH6XKzAmXp36p" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true"
+    "kotlin-language-version-configured": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -37,5 +69,15 @@
       <updated>1709395165564</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/engeto/ja/restaurant/Order.java</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
