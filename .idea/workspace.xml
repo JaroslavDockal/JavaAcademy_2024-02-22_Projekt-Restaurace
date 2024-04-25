@@ -5,16 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb4085bb-1772-4609-a5a5-ddb628c14fd1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Orders.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/CookBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/CookBook.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Dish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Dish.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/FileOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/FileOperations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/OrderItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/OrderItem.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/OrdersSortingCriteria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/OrdersSortingCriteria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/RestaurantException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/RestaurantException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/RestaurantManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/RestaurantManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Settings.java" afterDir="false" />
     </list>
@@ -26,14 +25,26 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "JaroslavDockal"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/JaroslavDockal/JavaAcademy_2024-02-22_Projekt-Restaurace.git",
+    "accountId": "ff8fe29a-6ef2-4bd3-8f13-190c57cb30bc"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -55,7 +66,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "21",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/jaros/IdeaProjects/JavaAcademy_2024-03-05_Ukol-Spring",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
@@ -68,14 +81,169 @@
       <option name="presentableId" value="Default" />
       <updated>1709395165564</updated>
     </task>
+    <task id="LOCAL-00001" summary="Created class for project settings">
+      <option name="closed" value="true" />
+      <created>1709572900219</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1709572900219</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Prepared class for Dish">
+      <option name="closed" value="true" />
+      <created>1709572962712</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1709572962712</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Created class for to store all dishes">
+      <option name="closed" value="true" />
+      <created>1709572984612</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1709572984612</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Created class OrderItem">
+      <option name="closed" value="true" />
+      <created>1709573011724</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1709573011724</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Created class Order">
+      <option name="closed" value="true" />
+      <created>1709573021980</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1709573021980</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Created enum for sorting criteria">
+      <option name="closed" value="true" />
+      <created>1709573043468</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1709573043468</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Created exception class">
+      <option name="closed" value="true" />
+      <created>1709573057431</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1709573057431</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Will be ignored later">
+      <option name="closed" value="true" />
+      <created>1709573121540</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1709573121540</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Project specifications">
+      <option name="closed" value="true" />
+      <created>1709573142879</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1709573142879</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Created class for order/dish operations">
+      <option name="closed" value="true" />
+      <created>1709573186415</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1709573186415</updated>
+    </task>
+    <task id="LOCAL-00011" summary="FileOperations class draft">
+      <option name="closed" value="true" />
+      <created>1709573753806</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1709573753806</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Created class for project settings" />
+    <MESSAGE value="Prepared class for Dish" />
+    <MESSAGE value="Created class for to store all dishes" />
+    <MESSAGE value="Created class OrderItem" />
+    <MESSAGE value="Created class Order" />
+    <MESSAGE value="Created enum for sorting criteria" />
+    <MESSAGE value="Created exception class" />
+    <MESSAGE value="Will be ignored later" />
+    <MESSAGE value="Project specifications" />
+    <MESSAGE value="Created class for order/dish operations" />
+    <MESSAGE value="FileOperations class draft" />
+    <option name="LAST_COMMIT_MESSAGE" value="FileOperations class draft" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/engeto/ja/restaurant/Order.java</url>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
