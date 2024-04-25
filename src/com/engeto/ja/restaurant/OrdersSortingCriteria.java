@@ -4,5 +4,5 @@ public enum OrdersSortingCriteria {
     TABLE_NUMBER,
     ORDERED_TIME,
     FULFILMENT_TIME,
-    TOTAL_PRICE
+    PRICE
 }
