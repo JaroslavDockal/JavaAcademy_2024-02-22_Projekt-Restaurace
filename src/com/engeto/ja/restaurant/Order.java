@@ -1,122 +1,122 @@
-// Restaurace má očíslované stoly. Zákazníci u těchto stolů si objednávají jídla.
-// Jedna objednávka popisuje objednání jednoho konkrétního jídla a vztahuje se ke konkrétnímu stolu.
-// U každé objednávky sleduj jaké jídlo bylo objednáno, kolik kusů tohoto jídla bylo objednáno,
-// kdy byla objednávka zadána a kdy vyřízena (orderedTime a fulfilmentTime) a zda je zaplacena.
-
-
 package com.engeto.ja.restaurant;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.time.temporal.ChronoUnit;
 
-public class Order {
-
+public class Order implements Comparable<Order>  {
+    private Dish dish;
+    private int quantity;
+    private LocalDateTime orderedTime;
+    private LocalDateTime fulfilmentTime;
     private int tableNumber;
-    private OrderItem item;
     private boolean paid;
 
-    public Order(int tableNumber, OrderItem item) throws RestaurantException {
+    public Order(Dish dish, int quantity, LocalDateTime orderedTime, LocalDateTime fulfilmentTime, int tableNumber, boolean paid) throws RestaurantException{
+        this.dish = dish;
+        setQuantity(quantity);
+        setOrderedTime(orderedTime);
+        this.fulfilmentTime = fulfilmentTime;
         setTableNumber(tableNumber);
-        this.item = item;
-        this.paid = false;
-    }
-
-    public void setFulfilmentTime(LocalDateTime fulfilmentTime) throws RestaurantException {
-        if (fulfilmentTime.isBefore(item.getOrderedTime())) {
-            throw new RestaurantException("Chyba při zadávání času vyřízení objednávky: " + fulfilmentTime.format(DateTimeFormatter.ofPattern(Settings.getDateFormat()))
-                         + " - čas vyřízení nemůže být před časem zadání objednávky: " + item.getOrderedTime());
-            }
-        item.setFulfilmentTime(fulfilmentTime);
-    }
-
-    public void setFulfilmentTime() throws RestaurantException {
-        item.setFulfilmentTime(LocalDateTime.now());
-    }
-
-    public void setItem(OrderItem item) {
-        this.item = item;
-    }
-
-    public void setPaid(boolean paid) {
         this.paid = paid;
     }
 
-    public void setAsPaid() {
-        this.paid = Boolean.TRUE;
+    public Order(Dish dish, int quantity, LocalDateTime orderedTime, int tableNumber) throws RestaurantException {
+        this(dish, quantity, orderedTime, null, tableNumber, false);
     }
 
-    public void setTableNumber(int tableNumber) throws RestaurantException {
+    public Order(Dish dish, int quantity,int tableNumber) throws RestaurantException {
+        this(dish, quantity, LocalDateTime.now(), tableNumber);
+    }
+
+    public Order(Dish dish, int tableNumber) throws RestaurantException {
+        this(dish, 1, tableNumber);
+    }
+
+    private void setQuantity(int quantity) throws RestaurantException {
+        if (quantity < 1) {
+            throw new RestaurantException("Zadané množství \"" + quantity + "\" je menší než minimální povolené množství 1.");
+        }
+        this.quantity = quantity;
+    }
+
+    private void setOrderedTime(LocalDateTime orderedTime) throws RestaurantException {
+        if (orderedTime == null) {
+            throw new RestaurantException("Zadaný čas objednávky je neplatný.");
+        }
+        this.orderedTime = orderedTime;
+    }
+
+    public void setFulfilmentTime(LocalDateTime fulfilmentTime) throws RestaurantException {
+        if (fulfilmentTime.isBefore(orderedTime)) {
+            throw new RestaurantException("Čas splnění nesmí být dřív než datum objednání. Zadaný čas: " + fulfilmentTime.format(DateTimeFormatter.ofPattern(Settings.getDateFormat())) + ".");
+        }
+        this.fulfilmentTime = fulfilmentTime;
+    }
+
+    public void setFulfilmentTime() throws RestaurantException {
+        this.setFulfilmentTime(LocalDateTime.now());
+    }
+
+    private void setTableNumber (int tableNumber) throws RestaurantException {
         if (tableNumber < 1 || tableNumber > Settings.getMaxTableNumber()) {
             throw new RestaurantException("Zadané číslo \"" + tableNumber + "\" není v rozsahu platných stolů.");
         }
         this.tableNumber = tableNumber;
     }
 
-    public int getTableNumber() {
-        return tableNumber;
+    public void setAsPaid() {
+        paid = true;
     }
 
-    public OrderItem getItem() {
-        return item;
+    public Dish getDish() {
+        return dish;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public LocalDateTime getOrderedTime() {
+        return orderedTime;
+    }
+
+    public LocalDateTime getFulfilmentTime() {
+        return fulfilmentTime;
+    }
+    public int getTableNumber() {
+        return tableNumber;
     }
 
     public boolean isPaid() {
         return paid;
     }
 
-    public BigDecimal getTotalPrice() {
-        BigDecimal totalPrice = BigDecimal.ZERO;
-        totalPrice = totalPrice.add(item.getDish().getPrice().multiply(BigDecimal.valueOf(item.getQuantity())));
-        return totalPrice;
+    public BigDecimal getOrderPrice() {
+        return dish.getPrice().multiply(BigDecimal.valueOf(quantity));
     }
 
-    public LocalDateTime getOrderedTime() {
-        return item.getOrderedTime();
+    public int getProcessingTime() {
+        return fulfilmentTime != null ? (int) ChronoUnit.MINUTES.between(orderedTime, fulfilmentTime) : 0;
+    }
+
+    public Order getOrder() {
+        return this;
     }
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Objednávka: stůl ").append(tableNumber).append(", Položky: ");
-
-        stringBuilder.append(item.getQuantity()).append("x ").append(item.getDish().getTitle()).append(", ");
-
-        stringBuilder.append("objednáno: ").append(item.getOrderedTime());
-        if (item.getFulfilmentTime() != null) {
-            stringBuilder.append(", vyřízeno: ").append(item.getFulfilmentTime());
-        }
-        stringBuilder.append(", zaplaceno: ").append(paid ? "ano" : "ne");
-        return stringBuilder.toString();
+        return dish.getTitle() + " "
+                + (quantity > 1 ? quantity + "x " : "") + "(" + getOrderPrice() + " Kč):\t"
+                + orderedTime.format(DateTimeFormatter.ofPattern(Settings.getTimeFormat())) + " - "
+                + (fulfilmentTime != null ? fulfilmentTime.format(DateTimeFormatter.ofPattern(Settings.getTimeFormat())) : "\t")
+                + (paid ? "zaplaceno" : "");
     }
 
-
+    @Override
     public int compareTo(Order otherOrder) {
-        return compareTo(otherOrder, OrdersSortingCriteria.TABLE_NUMBER);
-    }
-
-    public int compareTo(Order otherOrder, OrdersSortingCriteria sortingCriteria) {
-        switch (sortingCriteria) {
-            case TABLE_NUMBER:
-                return Integer.compare(this.tableNumber, otherOrder.tableNumber);
-            case ORDERED_TIME:
-                return this.item.getOrderedTime().compareTo(otherOrder.item.getOrderedTime());
-            case FULFILMENT_TIME:
-                if (this.item.getFulfilmentTime() == null && otherOrder.item.getFulfilmentTime() == null) {
-                    return 0;
-                } else if (this.item.getFulfilmentTime() == null) {
-                    return -1;
-                } else if (otherOrder.item.getFulfilmentTime() == null) {
-                    return 1;
-                } else {
-                    return this.item.getFulfilmentTime().compareTo(otherOrder.item.getFulfilmentTime());
-                }
-            case TOTAL_PRICE:
-                return this.getTotalPrice().compareTo(otherOrder.getTotalPrice());
-            default:
-                throw new IllegalArgumentException("Nepodporované kritérium řazení: " + sortingCriteria);
-        }
+        return this.orderedTime.compareTo(otherOrder.orderedTime);
     }
 
 }
