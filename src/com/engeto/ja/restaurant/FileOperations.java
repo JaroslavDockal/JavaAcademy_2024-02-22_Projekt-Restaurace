@@ -1,55 +1,106 @@
 package com.engeto.ja.restaurant;
 
 import java.io.*;
+import java.math.BigDecimal;
+import java.time.format.DateTimeParseException;
 import java.util.*;
 import java.time.*;
-import java.time.format.*;
+
+import java.util.Map;
 
 import static com.engeto.ja.restaurant.Settings.getDelimiter;
 
 public class FileOperations {
 
-    //Obecně jsou na řádku položky:
-//[číslo položky][.][mezera]
-//[název jídla][mezera]
-//[počet kusů v objednávce][mezera][(][celková cena včetně textu " Kč"][)]
-//[dvojtečka][tabulátor]
-//[čas zadání objednávky ve formátu hh:mm]
-//[-]
-//[čas vyřízení ve formátu hh:mm][tabulátor]
-//[text "zaplaceno", pokud již byla zaplacena – jinak nic]
-
-
-    //ToDo Specify the format of the file content
-    public String loadOrdersFromFile(ArrayList<Order> orders, String fileName) throws RestaurantException {
+    public void saveOrdersToFile(List<Order> orders, CookBook cookBook, String fileName) throws RestaurantException {
+        System.out.println("Ukládám objednávky do souboru " + fileName + "...");
+        if (orders.isEmpty()) {
+            throw new RestaurantException("Seznam objednávek je prázdný - nic k uložení!");
+        }
         int lineCounter = 0;
-        orders.clear();
-        try (Scanner scanner = new Scanner(new BufferedReader(new FileReader(fileName)))) {
-            while (scanner.hasNextLine()) {
+        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName)))) {
+            for (Order order : orders) {
+                if (cookBook.containsDish(order.getDish())) {
+                    writer.println(
+                        order.getTableNumber() + getDelimiter() +
+                        cookBook.getDishId(order.getDish()) + getDelimiter() +
+                        order.getQuantity() + getDelimiter() +
+                        order.getOrderedTime() + getDelimiter() +
+                        (order.getFulfilmentTime() != null ? order.getFulfilmentTime() : "null") + getDelimiter() +
+                        (order.isPaid() ? "zaplaceno" : "nezaplaceno"));
+                    lineCounter++;
+                    } else {
+                        throw new RestaurantException("Objednávka obsahuje neexistující jídlo!");
+                    }
+                }
+        } catch (FileNotFoundException e) {
+            throw new RestaurantException("Soubor " + fileName + " nebyl nalezen!\n" + e.getLocalizedMessage());
+        } catch (IOException e) {
+            throw new RestaurantException("Nastala chyba při zápisu do souboru " + fileName + "!\n" + e.getLocalizedMessage());
+        } finally {
+            System.out.println(saveToFileStatusMsg(lineCounter));
+        }
+    }
+
+    public void saveCookBookToFile(CookBook cookBook, String fileName) throws RestaurantException {
+        System.out.println("Ukládám jídelníček do souboru " + fileName + "...");
+        int lineCounter = 0;
+        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName)))) {
+            for (Map.Entry<Integer, Dish> entry : cookBook.getDishes().entrySet()) {
+                writer.println(
+                        entry.getKey() + getDelimiter() +
+                        entry.getValue().getTitle() + getDelimiter() +
+                        entry.getValue().getPrice() + getDelimiter() +
+                        entry.getValue().getPreparationTime() + getDelimiter() +
+                        entry.getValue().getImage());
                 lineCounter++;
-                String line = scanner.nextLine();
-                System.out.println(line);
-                String[] parts = line.split("\\. ");
-                if (parts.length != 2) {
-                    throw new RestaurantException("Nesprávný formát na řádku číslo " + lineCounter + ": " + line + "!");
+            }
+        } catch (FileNotFoundException e) {
+            throw new RestaurantException("Soubor " + fileName + " nebyl nalezen!\n" + e.getLocalizedMessage());
+        } catch (IOException e) {
+            throw new RestaurantException("Nastala chyba při zápisu do souboru " + fileName + "!\n" + e.getLocalizedMessage());
+        } finally {
+            System.out.println(saveToFileStatusMsg(lineCounter));
+        }
+    }
+
+    public void loadOrdersFromFile(List<Order> orders, CookBook cookBook, String fileName) throws RestaurantException {
+        System.out.println("Načítám objednávky ze souboru " + fileName + "...");
+        int lineCounter = 0;
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(getDelimiter());
+                if (parts.length != 6) {
+                    throw new RestaurantException("Chybný formát řádku " + (lineCounter + 1) + " v souboru " + fileName + "!");
                 }
-                String[] orderInfo = parts[1].split("\t");
-                if (orderInfo.length != 4 && orderInfo.length != 5) {
-                    throw new RestaurantException("Nesprávný počet položek na řádku číslo " + lineCounter + ": " + line + "!");
+                int tableNumber = Integer.parseInt(parts[0]);
+                int dishId = Integer.parseInt(parts[1]);
+                int quantity = Integer.parseInt(parts[2]);
+                LocalDateTime orderedTime = LocalDateTime.parse(parts[3]);
+                LocalDateTime fulfilmentTime;
+                if (parts[4].equals("null")) {
+                    fulfilmentTime = null;
+                } else {
+                    fulfilmentTime = LocalDateTime.parse(parts[4]);
                 }
-                String[] timeInfo = orderInfo[2].split("-");
-                String dishNo = orderInfo[0];
-                int amount = Integer.parseInt(orderInfo[1]);
-                double totalPrice = Double.parseDouble(timeInfo[0].replaceAll("[^0-9.]+", ""));
-                String orderedTime = timeInfo[1].trim();
-                String fulfilmentTime = null;
-                boolean paid = false;
-                if (orderInfo.length == 5) {
-                    fulfilmentTime = orderInfo[3].trim();
-                    paid = orderInfo[4].equals("zaplaceno");
+                if (fulfilmentTime.isBefore(orderedTime) && fulfilmentTime != null) {
+                    throw new RestaurantException("Čas splnění nesmí být dřív než datum objednání.");
                 }
-                Order order = new Order(dishNo, amount, totalPrice, orderedTime, fulfilmentTime, paid);
-                orders.add(order);
+                boolean paid;
+                if (parts[5].equals("zaplaceno")) {
+                    paid = true;
+                } else if (parts[5].equals("nezaplaceno")) {
+                    paid = false;
+                } else {
+                    throw new RestaurantException("Chybný formát platby na řádku " + (lineCounter + 1) + " v souboru " + fileName + "!");
+                }
+                if (cookBook.getDishes().containsKey(dishId)) {
+                    orders.add(new Order(cookBook.getDishById(dishId), quantity, orderedTime, fulfilmentTime, tableNumber, paid));
+                    lineCounter++;
+                } else {
+                    throw new RestaurantException("Objednávka obsahuje neexistující jídlo!");
+                }
             }
         } catch (FileNotFoundException e) {
             throw new RestaurantException("Soubor " + fileName + " nebyl nalezen!\n" + e.getLocalizedMessage());
@@ -59,38 +110,44 @@ public class FileOperations {
             throw new RestaurantException("Nesprávný formát data na řádku číslo: " + lineCounter + "!\n" + e.getLocalizedMessage());
         } catch (Exception e) {
             throw new RestaurantException("Nastala chyba při načítání seznamu objednávek ze souboru " + fileName + " (na řádku číslo " + lineCounter + ")!\n" + e.getLocalizedMessage());
+        } finally {
+            System.out.println(loadFromFileStatusMsg(lineCounter));
         }
-        return loadFromFileStatusMsg(orders.size());
     }
 
-    public String saveOrdersToFile(ArrayList<Order> orders, String fileName) throws RestaurantException{
+    public void loadCookBookFromFile(CookBook cookBook, String fileName) throws RestaurantException {
+        System.out.println("Načítám jídelníček ze souboru " + fileName + "...");
         int lineCounter = 0;
-        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName)))) {
-            for (Order order : orders) {
-                writer.println(
-                        order.dishNumber() + Settings.getDelimiter() +
-                                order.getAmount + Settings.getDelimiter() +
-                                order.getTotalPrice() + Settings.getDelimiter() +
-                                order.getOrderedTime() + Settings.getDelimiter() +
-                                order.getFulfilmentTime() + Settings.getDelimiter() +
-                                (order.isPaid() ? "zaplaceno" : "")
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(getDelimiter());
+                if (parts.length != 5) {
+                    throw new RestaurantException("Chybný formát řádku " + (lineCounter + 1) + " v souboru " + fileName + "!");
+                }
+                int id = Integer.parseInt(parts[0]);
+                String title = parts[1];
+                BigDecimal price = new BigDecimal(parts[2]);
+                int preparationTime = Integer.parseInt(parts[3]);
+                String image = parts[4];
+                cookBook.addDish(new Dish(title, price, preparationTime, image));
                 lineCounter++;
             }
         } catch (FileNotFoundException e) {
             throw new RestaurantException("Soubor " + fileName + " nebyl nalezen!\n" + e.getLocalizedMessage());
-        } catch (IOException e) {
-            throw new RestaurantException("Nastala chyba při zápisu do souboru " + fileName + "!\n" + e.getLocalizedMessage());
+        } catch (NumberFormatException e) {
+            throw new RestaurantException("Nesprávný formát čísla na řádku číslo: " + lineCounter + "!\n" + e.getLocalizedMessage());
+        } catch (Exception e) {
+            throw new RestaurantException("Nastala chyba při načítání jídelníčku ze souboru " + fileName + " (na řádku číslo " + lineCounter + ")!\n" + e.getLocalizedMessage());
         } finally {
-            return saveToFileStatusMsg(lineCounter);
+            System.out.println(loadFromFileStatusMsg(lineCounter));
         }
-
     }
 
     private String loadFromFileStatusMsg (int listSize) {
         String loadedStr, itemStr;
         switch (listSize) {
             case 0 -> {
-                // Neberu to jako chybu, ale jen jako informaci o stavu
                 return "Žádné položky nebyly načteny.";
             }case 1 -> {
                 loadedStr = "Načtena ";
@@ -126,6 +183,5 @@ public class FileOperations {
         }
         return savedStr + listSize + itemStr;
     }
-
 
 }
