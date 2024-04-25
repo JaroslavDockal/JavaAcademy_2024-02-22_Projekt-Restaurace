@@ -4,6 +4,7 @@
 
 package com.engeto.ja.restaurant;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,6 +50,54 @@ public class CookBook {
         }
     }
 
+    public void updateDishTitle(int id, String title) throws RestaurantException {
+        if (dishes.containsKey(id)) {
+            try {
+                dishes.get(id).setTitle(title);
+            } catch (Exception e) {
+                throw new RestaurantException("Chyba při aktualizaci názvu jídla s ID \"" + id + "\":\n" + e.getLocalizedMessage());
+            }
+        } else {
+            throw new RestaurantException("Jídlo s ID \"" + id + "\" nenalezeno.");
+        }
+    }
+
+    public void updateDishPrice(int id, BigDecimal price) throws RestaurantException {
+        if (dishes.containsKey(id)) {
+            try {
+                dishes.get(id).setPrice(price);
+            } catch (Exception e) {
+                throw new RestaurantException("Chyba při aktualizaci ceny jídla s ID \"" + id + "\":\n" + e.getLocalizedMessage());
+            }
+        } else {
+            throw new RestaurantException("Jídlo s ID \"" + id + "\" nenalezeno.");
+        }
+    }
+
+    public void updateDishPreparationTime(int id, int preparationTime) throws RestaurantException {
+        if (dishes.containsKey(id)) {
+            try {
+                dishes.get(id).setPreparationTime(preparationTime);
+            } catch (Exception e) {
+                throw new RestaurantException("Chyba při aktualizaci doby přípravy jídla s ID \"" + id + "\":\n" + e.getLocalizedMessage());
+            }
+        } else {
+            throw new RestaurantException("Jídlo s ID \"" + id + "\" nenalezeno.");
+        }
+    }
+
+    public void updateDishImage(int id, String image) throws RestaurantException {
+        if (dishes.containsKey(id)) {
+            try {
+                dishes.get(id).setImage(image);
+            } catch (Exception e) {
+                throw new RestaurantException("Chyba při aktualizaci obrázku jídla s ID \"" + id + "\":\n" + e.getLocalizedMessage());
+            }
+        } else {
+            throw new RestaurantException("Jídlo s ID \"" + id + "\" nenalezeno.");
+        }
+    }
+
     public Map<Integer, Dish> getDishes() {
         return new HashMap<>(dishes);
     }
@@ -60,6 +109,30 @@ public class CookBook {
     public void clearDishes() {
         dishes.clear();
         nextId = 1;
+    }
+
+    public Dish getDishById(int id) throws RestaurantException{
+        if (!dishes.containsKey(id)) {
+            throw new RestaurantException("Jídlo s ID \"" + id + "\" nenalezeno.");
+        }
+        return dishes.get(id);
+    }
+
+    public int getDishId(Dish dish) throws RestaurantException{
+        try {
+            for (Map.Entry<Integer, Dish> entry : dishes.entrySet()) {
+                if (entry.getValue().equals(dish)) {
+                    return entry.getKey();
+                }
+            }
+            throw new RestaurantException("Jídlo nenalezeno.");
+        } catch (Exception e) {
+            throw new RestaurantException("Nastala chyba při hledání jídla:\n" + e.getLocalizedMessage());
+        }
+    }
+
+    public Boolean containsDish(Dish dish) {
+        return dishes.containsValue(dish);
     }
 
     public String getDishInfo(int id) throws RestaurantException {
