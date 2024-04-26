@@ -31,7 +31,7 @@ public class Dish {
     }
 
     public void setPreparationTime(int preparationTime) throws RestaurantException{
-        if (preparationTime < 1) {
+        if (preparationTime < 0) {
             throw new RestaurantException("Zadaná chybná doba přípravy. Zadaná doba: \"" + preparationTime + "\" minut.");
         }
         this.preparationTime = preparationTime;
