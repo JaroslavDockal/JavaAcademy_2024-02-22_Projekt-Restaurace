@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb4085bb-1772-4609-a5a5-ddb628c14fd1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Orders.java" afterDir="false" />
+    <list default="true" id="fb4085bb-1772-4609-a5a5-ddb628c14fd1" name="Changes" comment="Started with calling of some relevant methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/orders.txt" beforeDir="false" afterPath="$PROJECT_DIR$/resources/orders.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/CookBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/CookBook.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Dish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Dish.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/FileOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/FileOperations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/OrderItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/OrdersSortingCriteria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/OrdersSortingCriteria.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/RestaurantManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/RestaurantManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Settings.java" afterDir="false" />
     </list>
@@ -169,7 +166,103 @@
       <option name="project" value="LOCAL" />
       <updated>1709573753806</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added input verification">
+      <option name="closed" value="true" />
+      <created>1714029876336</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1714029876336</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Removed">
+      <option name="closed" value="true" />
+      <created>1714029919029</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1714029919029</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Merged OrderItem and Order into this">
+      <option name="closed" value="true" />
+      <created>1714029970505</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1714029970505</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Merged OrderItem and Order into this">
+      <option name="closed" value="true" />
+      <created>1714029989340</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1714029989340</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added files path specification">
+      <option name="closed" value="true" />
+      <created>1714030029370</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1714030029370</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Minor change...">
+      <option name="closed" value="true" />
+      <created>1714030057104</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1714030057104</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Introduced new methods to retrieve Dish/DishId">
+      <option name="closed" value="true" />
+      <created>1714030111546</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1714030111546</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Created draft version of Orders">
+      <option name="closed" value="true" />
+      <created>1714030147213</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1714030147213</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Introduced functions to get expected info summary">
+      <option name="closed" value="true" />
+      <created>1714030195273</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1714030195273</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Created methods for Orders/CoocBook import/export">
+      <option name="closed" value="true" />
+      <created>1714030273691</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1714030273691</updated>
+    </task>
+    <task id="LOCAL-00022" summary="External files">
+      <option name="closed" value="true" />
+      <created>1714030307928</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1714030307928</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Started with calling of some relevant methods">
+      <option name="closed" value="true" />
+      <created>1714030391107</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1714030391107</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -195,57 +288,17 @@
     <MESSAGE value="Project specifications" />
     <MESSAGE value="Created class for order/dish operations" />
     <MESSAGE value="FileOperations class draft" />
-    <option name="LAST_COMMIT_MESSAGE" value="FileOperations class draft" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>58</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Added input verification" />
+    <MESSAGE value="Removed" />
+    <MESSAGE value="Merged OrderItem and Order into this" />
+    <MESSAGE value="Added files path specification" />
+    <MESSAGE value="Minor change..." />
+    <MESSAGE value="Introduced new methods to retrieve Dish/DishId" />
+    <MESSAGE value="Created draft version of Orders" />
+    <MESSAGE value="Introduced functions to get expected info summary" />
+    <MESSAGE value="Created methods for Orders/CoocBook import/export" />
+    <MESSAGE value="External files" />
+    <MESSAGE value="Started with calling of some relevant methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started with calling of some relevant methods" />
   </component>
 </project>
