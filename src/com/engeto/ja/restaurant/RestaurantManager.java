@@ -2,6 +2,7 @@ package com.engeto.ja.restaurant;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -11,27 +12,31 @@ public class RestaurantManager {
     public int getUnfinishedOrdersCount(List<Order> orders) {
         int unfinishedOrders = 0;
         for (Order order : orders) {
-            if (order.getFulfilmentTime() == null) {
+            if (order.getFulfilmentTime() == LocalDateTime.MAX) {
                 unfinishedOrders++;
             }
         }
         return unfinishedOrders;
     }
 
-    public List<Order> getOrdersSortedByOrderedTime(List<Order> orders) throws RestaurantException{
+    public StringBuilder getOrdersSummarySortedByOrderedTime(List<Order> orders) throws RestaurantException{
         if (orders.isEmpty()) {
             throw new RestaurantException("Seznam objednávek je prázdný.");
         }
         List<Order> sortedOrders = new ArrayList<>(orders);
         sortedOrders.sort(Comparator.comparing(Order::getOrderedTime));
-        return sortedOrders;
+        StringBuilder result = new StringBuilder();
+        for (Order order : sortedOrders) {
+            result.append(order.toString()).append("\n");
+        }
+        return result;
     }
 
     public int getAverageOrderProcessingTime(List<Order> orders) {
         int totalProcessingTime = 0;
         int processedOrders = 0;
         for (Order order : orders) {
-            if (order.getFulfilmentTime() != null) {
+            if (order.getFulfilmentTime() != LocalDateTime.MAX) {
                 totalProcessingTime += order.getProcessingTime();
                 processedOrders++;
             }
@@ -77,7 +82,7 @@ public class RestaurantManager {
             throw new RestaurantException("Zadané číslo stolu \"" + tableNumber + "\" je mimo rozsah povolených hodnot.");
         }
         StringBuilder result = new StringBuilder();
-        result.append("** Objednávky pro stůl č. ").append(tableNumber).append(" **\n");
+        result.append("** Objednávky pro stůl č. ").append(String.format("%02d", tableNumber)).append(" **\n");
         result.append("****\n");
         for (Order order : orders) {
             if (order.getTableNumber() == tableNumber) {
