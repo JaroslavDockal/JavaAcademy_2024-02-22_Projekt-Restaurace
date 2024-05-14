@@ -15,7 +15,7 @@ public class Main {
         RestaurantManager restaurantManager = new RestaurantManager();
         FileOperations fileOperations = new FileOperations();
 
-//        Načti stav evidence z disku.
+    // 1. Nacti stav evidence z disku.
 
         try {
             fileOperations.loadCookBookFromFile(cookBook, fileNameCookBook);
@@ -34,12 +34,12 @@ public class Main {
         catch (Exception e) {
             System.out.println("Nastala neznámá chyba:\n" + e.getLocalizedMessage());
         }
-
-        addDishToCookBook(cookBook, "Kuřecí řízek obalovaný 150 g", BigDecimal.valueOf(150), 10);
+    // 2. Priprava testovacich dat.
+        addDishToCookBook(cookBook,"Kuřecí řízek obalovaný 150 g", BigDecimal.valueOf(150), 10);
         addDishToCookBook(cookBook,"Hranolky 150 g", BigDecimal.valueOf(50), 10);
         addDishToCookBook(cookBook,"Pstruh na víně 200 g", BigDecimal.valueOf(180), 30);
         addDishToCookBook(cookBook,"Kofola 0,5 l", BigDecimal.valueOf(30), 5);
-
+ 
 
         createNewOrder(cookBook, orders, 15, 1, 2);
         createNewOrder(cookBook, orders, 15, 2, 2);
@@ -49,10 +49,12 @@ public class Main {
 
         orders.printOrders();
 
+    // 3. Vypis celkove ceny konzumace jidla
         System.out.println("Celková cena konzumace pro stůl číslo 15: " + restaurantManager.getTotalPriceForTable(orders.getOrders(), 15) + " Kč");
 
         fileOperations.saveOrdersToFile(orders.getOrders(), cookBook, fileNameOrders);
 
+    // 4. Vypis vsech udaju ziskanych z metod
         System.out.println("Počet nevyřízených objednávek: " + restaurantManager.getUnfinishedOrdersCount(orders.getOrders()));
         System.out.println("Seznam objednávek seřazený podle času objednání:\n" + restaurantManager.getOrdersSortedByOrderedTime(orders.getOrders()));
         System.out.println("Průměrná doba zpracování objednávek: " + restaurantManager.getAverageOrderProcessingTime(orders.getOrders()) + " minut");

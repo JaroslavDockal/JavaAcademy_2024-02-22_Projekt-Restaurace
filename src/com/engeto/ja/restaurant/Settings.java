@@ -4,7 +4,7 @@ public class Settings {
 
     private static final String DEFAULT_IMAGE = "blank";
     private static final String DATE_FORMAT = "d.M. H:m";
-A    private static final String TIME_FORMAT = "HH:mm";
+    private static final String TIME_FORMAT = "HH:mm";
     private static final String DELIMITER = "\t";
     private static final int MAX_TABLE_NUMBER = 19;
     private static final String FILE_NAME_ORDERS = "resources/orders.txt";
