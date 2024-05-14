@@ -9,7 +9,7 @@ public class Settings {
     private static final int MAX_TABLE_NUMBER = 19;
     private static final String FILE_NAME_ORDERS = "resources/orders.txt";
     private static final String FILE_NAME_COOKBOOK = "resources/cookbook.txt";
-    private static final String FILE_NAME_SUMMARY = "resources/summary.txt";
+    private static final String FILE_NAME_SUMMARY = "resources/summaryTable";
 
     public static String getDefaultImage() {
         return DEFAULT_IMAGE;

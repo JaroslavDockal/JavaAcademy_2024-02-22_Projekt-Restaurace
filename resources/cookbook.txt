@@ -1,0 +1,29 @@
+1	Kuřecí řízek obalovaný 150 g	150	10	blank
+2	Hranolky 150 g	50	10	blank
+3	Pstruh na víně 200 g	180	30	blank
+4	Kofola 0,5 l	30	5	blank
+5	Svíčková na smetaně	180	30	blank
+6	Guláš	160	25	blank
+7	Rajská omáčka	150	20	blank
+8	Řízek	140	15	blank
+9	Palačinky	120	10	blank
+10	Pizza	200	20	blank
+11	Hamburger	150	15	blank
+12	Hot Dog	100	10	blank
+13	Salát Caesar	130	10	blank
+14	Tiramisu	110	15	blank
+15	Cheesecake	120	20	blank
+16	Brownie	100	15	blank
+17	Coca Cola	30	0	blank
+18	Pepsi	30	0	blank
+19	Sprite	30	0	blank
+20	Fanta	30	0	blank
+21	Minerálka	25	0	blank
+22	Espresso	40	5	blank
+23	Cappuccino	50	5	blank
+24	Čaj	30	5	blank
+25	Vegetariánská pizza	200	20	blank
+26	Vegetariánský burger	150	15	blank
+27	Salát s avokádem	130	10	blank
+28	Tofu s rýží	120	15	blank
+29	Vegetariánské lasagne	160	30	blank

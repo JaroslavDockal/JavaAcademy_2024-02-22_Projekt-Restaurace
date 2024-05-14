@@ -22,8 +22,12 @@ public class Order implements Comparable<Order>  {
         this.paid = paid;
     }
 
+    public Order(Dish dish, int quantity, LocalDateTime orderedTime, int tableNumber, boolean paid) throws RestaurantException{
+        this(dish, quantity, orderedTime, LocalDateTime.MAX, tableNumber, paid);
+    }
+
     public Order(Dish dish, int quantity, LocalDateTime orderedTime, int tableNumber) throws RestaurantException {
-        this(dish, quantity, orderedTime, null, tableNumber, false);
+        this(dish, quantity, orderedTime, LocalDateTime.MAX, tableNumber, false);
     }
 
     public Order(Dish dish, int quantity,int tableNumber) throws RestaurantException {
@@ -110,7 +114,7 @@ public class Order implements Comparable<Order>  {
         return dish.getTitle() + " "
                 + (quantity > 1 ? quantity + "x " : "") + "(" + getOrderPrice() + " Kč):\t"
                 + orderedTime.format(DateTimeFormatter.ofPattern(Settings.getTimeFormat())) + " - "
-                + (fulfilmentTime != null ? fulfilmentTime.format(DateTimeFormatter.ofPattern(Settings.getTimeFormat())) : "\t")
+                + (fulfilmentTime != LocalDateTime.MAX ? fulfilmentTime.format(DateTimeFormatter.ofPattern(Settings.getTimeFormat())) : "\t")
                 + (paid ? "zaplaceno" : "");
     }
 

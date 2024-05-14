@@ -66,6 +66,7 @@ public class FileOperations {
 
     public void loadOrdersFromFile(List<Order> orders, CookBook cookBook, String fileName) throws RestaurantException {
         System.out.println("Načítám objednávky ze souboru " + fileName + "...");
+        orders.clear();
         int lineCounter = 0;
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
@@ -96,7 +97,11 @@ public class FileOperations {
                     throw new RestaurantException("Chybný formát platby na řádku " + (lineCounter + 1) + " v souboru " + fileName + "!");
                 }
                 if (cookBook.getDishes().containsKey(dishId)) {
-                    orders.add(new Order(cookBook.getDishById(dishId), quantity, orderedTime, fulfilmentTime, tableNumber, paid));
+                    if (fulfilmentTime == null) {
+                        orders.add(new Order(cookBook.getDishById(dishId), quantity, orderedTime, tableNumber, paid));
+                    } else {
+                        orders.add(new Order(cookBook.getDishById(dishId), quantity, orderedTime, fulfilmentTime, tableNumber, paid));
+                    }
                     lineCounter++;
                 } else {
                     throw new RestaurantException("Objednávka obsahuje neexistující jídlo!");
@@ -141,6 +146,17 @@ public class FileOperations {
             throw new RestaurantException("Nastala chyba při načítání jídelníčku ze souboru " + fileName + " (na řádku číslo " + lineCounter + ")!\n" + e.getLocalizedMessage());
         } finally {
             System.out.println(loadFromFileStatusMsg(lineCounter));
+        }
+    }
+
+    public void saveTableSummaryToFile (StringBuilder tableSummary, String fileName) throws RestaurantException {
+        System.out.println("Ukládám souhrn objednávek pro stůl do souboru " + fileName + "...");
+        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName)))) {
+            writer.println(tableSummary);
+        } catch (FileNotFoundException e) {
+            throw new RestaurantException("Soubor " + fileName + " nebyl nalezen!\n" + e.getLocalizedMessage());
+        } catch (IOException e) {
+            throw new RestaurantException("Nastala chyba při zápisu do souboru " + fileName + "!\n" + e.getLocalizedMessage());
         }
     }
 
