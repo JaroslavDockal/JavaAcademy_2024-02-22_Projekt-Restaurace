@@ -19,49 +19,51 @@ public class Main {
         addDishToCookBook(cookBook,"Pstruh na víně 200 g", BigDecimal.valueOf(180), 30);
         addDishToCookBook(cookBook,"Kofola 0,5 l", BigDecimal.valueOf(30), 5);
 
-//        addDishToCookBook(cookBook, "Svíčková na smetaně", BigDecimal.valueOf(180), 30);
-//        addDishToCookBook(cookBook, "Guláš", BigDecimal.valueOf(160), 25);
-//        addDishToCookBook(cookBook, "Rajská omáčka", BigDecimal.valueOf(150), 20);
-//        addDishToCookBook(cookBook, "Řízek", BigDecimal.valueOf(140), 15);
-//        addDishToCookBook(cookBook, "Palačinky", BigDecimal.valueOf(120), 10);
-//        addDishToCookBook(cookBook, "Pizza", BigDecimal.valueOf(200), 20);
-//        addDishToCookBook(cookBook, "Hamburger", BigDecimal.valueOf(150), 15);
-//        addDishToCookBook(cookBook, "Hot Dog", BigDecimal.valueOf(100), 10);
-//        addDishToCookBook(cookBook, "Salát Caesar", BigDecimal.valueOf(130), 10);
-//        addDishToCookBook(cookBook, "Tiramisu", BigDecimal.valueOf(110), 15);
-//        addDishToCookBook(cookBook, "Cheesecake", BigDecimal.valueOf(120), 20);
-//        addDishToCookBook(cookBook, "Brownie", BigDecimal.valueOf(100), 15);
-//        addDishToCookBook(cookBook, "Coca Cola", BigDecimal.valueOf(30), 0);
-//        addDishToCookBook(cookBook, "Pepsi", BigDecimal.valueOf(30), 0);
-//        addDishToCookBook(cookBook, "Sprite", BigDecimal.valueOf(30), 0);
-//        addDishToCookBook(cookBook, "Fanta", BigDecimal.valueOf(30), 0);
-//        addDishToCookBook(cookBook, "Minerálka", BigDecimal.valueOf(25), 0);
-//        addDishToCookBook(cookBook, "Espresso", BigDecimal.valueOf(40), 5);
-//        addDishToCookBook(cookBook, "Cappuccino", BigDecimal.valueOf(50), 5);
-//        addDishToCookBook(cookBook, "Čaj", BigDecimal.valueOf(30), 5);
-//        addDishToCookBook(cookBook, "Vegetariánská pizza", BigDecimal.valueOf(200), 20);
-//        addDishToCookBook(cookBook, "Vegetariánský burger", BigDecimal.valueOf(150), 15);
-//        addDishToCookBook(cookBook, "Salát s avokádem", BigDecimal.valueOf(130), 10);
-//        addDishToCookBook(cookBook, "Tofu s rýží", BigDecimal.valueOf(120), 15);
-//        addDishToCookBook(cookBook, "Vegetariánské lasagne", BigDecimal.valueOf(160), 30);
-
+/*
+        addDishToCookBook(cookBook, "Svíčková na smetaně", BigDecimal.valueOf(180), 30);
+        addDishToCookBook(cookBook, "Guláš", BigDecimal.valueOf(160), 25);
+        addDishToCookBook(cookBook, "Rajská omáčka", BigDecimal.valueOf(150), 20);
+        addDishToCookBook(cookBook, "Řízek", BigDecimal.valueOf(140), 15);
+        addDishToCookBook(cookBook, "Palačinky", BigDecimal.valueOf(120), 10);
+        addDishToCookBook(cookBook, "Pizza", BigDecimal.valueOf(200), 20);
+        addDishToCookBook(cookBook, "Hamburger", BigDecimal.valueOf(150), 15);
+        addDishToCookBook(cookBook, "Hot Dog", BigDecimal.valueOf(100), 10);
+        addDishToCookBook(cookBook, "Salát Caesar", BigDecimal.valueOf(130), 10);
+        addDishToCookBook(cookBook, "Tiramisu", BigDecimal.valueOf(110), 15);
+        addDishToCookBook(cookBook, "Cheesecake", BigDecimal.valueOf(120), 20);
+        addDishToCookBook(cookBook, "Brownie", BigDecimal.valueOf(100), 15);
+        addDishToCookBook(cookBook, "Coca Cola", BigDecimal.valueOf(30), 0);
+        addDishToCookBook(cookBook, "Pepsi", BigDecimal.valueOf(30), 0);
+        addDishToCookBook(cookBook, "Sprite", BigDecimal.valueOf(30), 0);
+        addDishToCookBook(cookBook, "Fanta", BigDecimal.valueOf(30), 0);
+        addDishToCookBook(cookBook, "Minerálka", BigDecimal.valueOf(25), 0);
+        addDishToCookBook(cookBook, "Espresso", BigDecimal.valueOf(40), 5);
+        addDishToCookBook(cookBook, "Cappuccino", BigDecimal.valueOf(50), 5);
+        addDishToCookBook(cookBook, "Čaj", BigDecimal.valueOf(30), 5);
+        addDishToCookBook(cookBook, "Vegetariánská pizza", BigDecimal.valueOf(200), 20);
+        addDishToCookBook(cookBook, "Vegetariánský burger", BigDecimal.valueOf(150), 15);
+        addDishToCookBook(cookBook, "Salát s avokádem", BigDecimal.valueOf(130), 10);
+        addDishToCookBook(cookBook, "Tofu s rýží", BigDecimal.valueOf(120), 15);
+        addDishToCookBook(cookBook, "Vegetariánské lasagne", BigDecimal.valueOf(160), 30);
+*/
         createNewOrder(cookBook, orders, 15, 1, 2);
         createNewOrder(cookBook, orders, 15, 2, 2);
         createNewOrder(cookBook, orders, 15, 4, 2);
 
-//        createNewOrder(cookBook, orders, 1, 1, 2,LocalDateTime.of(2024, 4, 12, 12, 37,25));
-//        createNewOrder(cookBook, orders, 1, 2, 1,LocalDateTime.of(2024, 4, 12, 12, 39,25));
-//        createNewOrder(cookBook, orders, 2, 3, 3,LocalDateTime.of(2024, 4, 12, 12, 40,25));
-//        createNewOrder(cookBook, orders, 2, 4, 2,LocalDateTime.of(2024, 4, 12, 13, 47,25));
-//        createNewOrder(cookBook, orders, 3, 5, 1);
-//        createNewOrder(cookBook, orders, 4, 6, 2);
-//        createNewOrder(cookBook, orders, 4, 7, 3);
-//        createNewOrder(cookBook, orders, 4, 8, 1);
-//        createNewOrder(cookBook, orders, 5, 9, 2);
-//        createNewOrder(cookBook, orders, 6, 10, 3);
+/*
+        createNewOrder(cookBook, orders, 1, 1, 2,LocalDateTime.of(2024, 4, 12, 12, 37,25));
+        createNewOrder(cookBook, orders, 1, 2, 1,LocalDateTime.of(2024, 4, 12, 12, 39,25));
+        createNewOrder(cookBook, orders, 2, 3, 3,LocalDateTime.of(2024, 4, 12, 12, 40,25));
+        createNewOrder(cookBook, orders, 2, 4, 2,LocalDateTime.of(2024, 4, 12, 13, 47,25));
+        createNewOrder(cookBook, orders, 3, 5, 1);
+        createNewOrder(cookBook, orders, 4, 6, 2);
+        createNewOrder(cookBook, orders, 4, 7, 3);
+        createNewOrder(cookBook, orders, 4, 8, 1);
+        createNewOrder(cookBook, orders, 5, 9, 2);
+        createNewOrder(cookBook, orders, 6, 10, 3);
+*/
 
 
-//
         setOrderFulfilmentTime(orders.getOrders(), 2);
         createNewOrder(cookBook, orders, 2, 3, 1);
 
