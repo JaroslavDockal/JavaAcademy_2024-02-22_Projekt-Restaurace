@@ -78,7 +78,7 @@ public class Main {
         printOrdersSummarySortedByOrderedTime(orders);
         printAverageOrderProcessingTime (orders);
         printUniqueDishesOrderedToday(orders);
-        //printOrdersForTable(orders,15);
+        printOrdersForTable(orders,15);
 
 
         setOrderFulfilmentTime(orders.getOrders(), 3);

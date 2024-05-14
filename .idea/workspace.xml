@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb4085bb-1772-4609-a5a5-ddb628c14fd1" name="Changes" comment="Started with calling of some relevant methods" />
+    <list default="true" id="fb4085bb-1772-4609-a5a5-ddb628c14fd1" name="Changes" comment="Adding new comments" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -261,7 +261,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715700411495</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Started with calling of some relevant methods">
+      <option name="closed" value="true" />
+      <created>1715700799846</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1715700799846</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Adding new comments">
+      <option name="closed" value="true" />
+      <created>1715701017898</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1715701017898</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -298,6 +314,7 @@
     <MESSAGE value="Created methods for Orders/CoocBook import/export" />
     <MESSAGE value="External files" />
     <MESSAGE value="Started with calling of some relevant methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started with calling of some relevant methods" />
+    <MESSAGE value="Adding new comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding new comments" />
   </component>
 </project>
