@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb4085bb-1772-4609-a5a5-ddb628c14fd1" name="Changes" comment="Adding new comments" />
+    <list default="true" id="fb4085bb-1772-4609-a5a5-ddb628c14fd1" name="Changes" comment="Pročištění kódu">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/cookbook.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/orders.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/summaryTable04.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/summaryTable15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/RestaurantManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/ja/restaurant/RestaurantManager.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,19 +56,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jaros/IdeaProjects/JavaAcademy_2024-03-05_Ukol-Spring&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "21",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/jaros/IdeaProjects/JavaAcademy_2024-04-04_Projekt-GenesisResources",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -277,7 +286,31 @@
       <option name="project" value="LOCAL" />
       <updated>1715701017898</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Použita PriorityQueue pro ID v mapě">
+      <option name="closed" value="true" />
+      <created>1716136354384</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1716136354384</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Pročištění kódu">
+      <option name="closed" value="true" />
+      <created>1716136438555</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1716136438555</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Pročištění kódu">
+      <option name="closed" value="true" />
+      <created>1716136464469</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1716136464469</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -315,6 +348,8 @@
     <MESSAGE value="External files" />
     <MESSAGE value="Started with calling of some relevant methods" />
     <MESSAGE value="Adding new comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding new comments" />
+    <MESSAGE value="Použita PriorityQueue pro ID v mapě" />
+    <MESSAGE value="Pročištění kódu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pročištění kódu" />
   </component>
 </project>
