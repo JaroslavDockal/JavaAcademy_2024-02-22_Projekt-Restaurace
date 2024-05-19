@@ -114,7 +114,7 @@ public class Order implements Comparable<Order>  {
         return dish.getTitle() + " "
                 + (quantity > 1 ? quantity + "x " : "") + "(" + getOrderPrice() + " Kč):\t"
                 + orderedTime.format(DateTimeFormatter.ofPattern(Settings.getTimeFormat())) + " - "
-                + (fulfilmentTime != LocalDateTime.MAX ? fulfilmentTime.format(DateTimeFormatter.ofPattern(Settings.getTimeFormat())) : "\t")
+                + (fulfilmentTime.getYear() != LocalDateTime.MAX.getYear() ? fulfilmentTime.format(DateTimeFormatter.ofPattern(Settings.getTimeFormat())) : "\t")
                 + (paid ? "zaplaceno" : "");
     }
 

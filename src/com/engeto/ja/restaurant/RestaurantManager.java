@@ -12,7 +12,7 @@ public class RestaurantManager {
     public int getUnfinishedOrdersCount(List<Order> orders) {
         int unfinishedOrders = 0;
         for (Order order : orders) {
-            if (order.getFulfilmentTime() == LocalDateTime.MAX) {
+            if (order.getFulfilmentTime().getYear() == LocalDateTime.MAX.getYear()) {
                 unfinishedOrders++;
             }
         }
@@ -36,7 +36,7 @@ public class RestaurantManager {
         int totalProcessingTime = 0;
         int processedOrders = 0;
         for (Order order : orders) {
-            if (order.getFulfilmentTime() != LocalDateTime.MAX) {
+            if (order.getFulfilmentTime().getYear() != LocalDateTime.MAX.getYear()) {
                 totalProcessingTime += order.getProcessingTime();
                 processedOrders++;
             }
