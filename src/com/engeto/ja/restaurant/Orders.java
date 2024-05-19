@@ -15,10 +15,6 @@ public class Orders {
         return this.orders;
     }
 
-    public void clearOrders() {
-        this.orders.clear();
-    }
-
     public void printOrders() {
         for (Order order : orders) {
             System.out.println(order.toString());
