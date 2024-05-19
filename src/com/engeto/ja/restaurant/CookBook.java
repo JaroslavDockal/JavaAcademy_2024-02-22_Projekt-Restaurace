@@ -1,25 +1,41 @@
-// Vytvoř třídu CookBook, která bude reprezentovat zásobník jídel v naší restauraci.
-//Kuchaři mají připraven zásobník jídel (dish + cook book).
-//Kuchaři mají možnost některá jídla ze zásobníku vyřadit, přidat, nebo upravit.
+// Kuchaři mohou přidávat, odebírat, aktualizovat a získávat informace o jídlech.
+// Metody pro realizaci těchto operací  jsou implementovány, ale nejsou použity.
 
 package com.engeto.ja.restaurant;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 public class CookBook {
 
     private Map<Integer, Dish> dishes = new HashMap<>();
+    private PriorityQueue<Integer> freeIds = new PriorityQueue<>();
     private int nextId = 1;
 
     public void addDish(Dish dish) throws RestaurantException {
+        if (containsDish(dish)) {
+            throw new RestaurantException("Jídlo \"" + dish.getTitle() + "\" již existuje.");
+        }
         try {
-            dishes.put(nextId, dish);
-            nextId++;
+            int id;
+            if (freeIds.isEmpty()) {
+                id = nextId++;
+            } else {
+                id = freeIds.poll();
+            }
+            dishes.put(id, dish);
         } catch (Exception e) {
             throw new RestaurantException("Nastala chyba při přidávání jídla:\n" + e.getLocalizedMessage());
         }
+    }
+
+    public void addDishWithId(int id, Dish dish) throws RestaurantException {
+        if (dishes.containsKey(id) || containsDish(dish)) {
+            throw new RestaurantException("Jídlo s ID \"" + id + "\" již existuje.");
+        }
+        dishes.put(id, dish);
     }
 
     public Dish getDish(int id) throws RestaurantException {
@@ -33,6 +49,7 @@ public class CookBook {
     public void removeDish(int id) throws RestaurantException {
         if (dishes.containsKey(id)) {
             dishes.remove(id);
+            freeIds.add(id);
         } else {
             throw new RestaurantException("Jídlo s ID \"" + id + "\" nenalezeno.");
         }
@@ -132,7 +149,7 @@ public class CookBook {
     }
 
     public Boolean containsDish(Dish dish) {
-        return dishes.containsValue(dish);
+        return dishes.values().stream().anyMatch(d -> d.getTitle().equals(dish.getTitle()));
     }
 
     public String getDishInfo(int id) throws RestaurantException {
@@ -156,4 +173,13 @@ public class CookBook {
             return stringBuilder.toString();
         }
     }
+
+    public void setNextId(int nextId) {
+        this.nextId = nextId;
+    }
+
+    public void setFreeIds(PriorityQueue<Integer> freeIds) {
+        this.freeIds = new PriorityQueue<>(freeIds);
+    }
+
 }

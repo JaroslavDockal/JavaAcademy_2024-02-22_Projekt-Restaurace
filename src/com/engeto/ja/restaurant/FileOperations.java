@@ -97,11 +97,7 @@ public class FileOperations {
                     throw new RestaurantException("Chybný formát platby na řádku " + (lineCounter + 1) + " v souboru " + fileName + "!");
                 }
                 if (cookBook.getDishes().containsKey(dishId)) {
-                    if (fulfilmentTime == null) {
-                        orders.add(new Order(cookBook.getDishById(dishId), quantity, orderedTime, tableNumber, paid));
-                    } else {
-                        orders.add(new Order(cookBook.getDishById(dishId), quantity, orderedTime, fulfilmentTime, tableNumber, paid));
-                    }
+                     orders.add(new Order(cookBook.getDishById(dishId), quantity, orderedTime, fulfilmentTime, tableNumber, paid));
                     lineCounter++;
                 } else {
                     throw new RestaurantException("Objednávka obsahuje neexistující jídlo!");
@@ -122,7 +118,11 @@ public class FileOperations {
 
     public void loadCookBookFromFile(CookBook cookBook, String fileName) throws RestaurantException {
         System.out.println("Načítám jídelníček ze souboru " + fileName + "...");
+        cookBook.clearDishes();
         int lineCounter = 0;
+        int maxId = 0;
+        PriorityQueue<Integer> freeIds = new PriorityQueue<>();
+
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -135,7 +135,10 @@ public class FileOperations {
                 BigDecimal price = new BigDecimal(parts[2]);
                 int preparationTime = Integer.parseInt(parts[3]);
                 String image = parts[4];
-                cookBook.addDish(new Dish(title, price, preparationTime, image));
+                if (id > maxId) {
+                    maxId = id;
+                }
+                cookBook.addDishWithId(id, new Dish(title, price, preparationTime, image));
                 lineCounter++;
             }
         } catch (FileNotFoundException e) {
@@ -147,6 +150,9 @@ public class FileOperations {
         } finally {
             System.out.println(loadFromFileStatusMsg(lineCounter));
         }
+
+        cookBook.setNextId(maxId + 1);
+        cookBook.setFreeIds(freeIds);
     }
 
     public void saveTableSummaryToFile (StringBuilder tableSummary, String fileName) throws RestaurantException {
