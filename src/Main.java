@@ -12,10 +12,10 @@ public class Main {
         CookBook cookBook = new CookBook();
         Orders orders = new Orders();
 
-    //  1. Načtení stavu evidence z disku
+        //  1. Načtení stavu evidence z disku
        loadDataFromDisk(cookBook, orders);
 
-    //  2. Připrava testovacích dat
+        //  2. Příprava testovacích dat
         addDishToCookBook(cookBook,"Kuřecí řízek obalovaný 150 g", BigDecimal.valueOf(150), 10);
         addDishToCookBook(cookBook,"Hranolky 150 g", BigDecimal.valueOf(50), 10);
         addDishToCookBook(cookBook,"Pstruh na víně 200 g", BigDecimal.valueOf(180), 30);
@@ -30,7 +30,7 @@ public class Main {
 
         orders.printOrders();
 
-    //  3. Výpis celkové ceny konzumace pro stůl č. 15
+        //  3. Výpis celkové ceny konzumace pro stůl č. 15
         printTotalPriceForTable(orders, 15);
 
         // 4. Získání informací pro management
@@ -40,7 +40,7 @@ public class Main {
         printUniqueDishesOrderedToday(orders);
         printOrdersForTable(orders,15);
 
-    //  5. Ulozeni stavu evidence na disk
+        //  5. Uložení stavu evidence na disk
         saveDataToDisk(cookBook, orders);
         saveTableSummaryToFile (orders, 15);
 
@@ -99,7 +99,7 @@ public class Main {
         }
     }
 
-//  4. Vypis vsech udaju ziskanych z metod
+    // 4. Získání informací pro management
     public static void printUnfinishedOrdersCount (Orders orders) {
         RestaurantManager restaurantManager = new RestaurantManager();
         System.out.println("Počet nevyřízených objednávek: " + restaurantManager.getUnfinishedOrdersCount(orders.getOrders()));
@@ -124,7 +124,7 @@ public class Main {
         }
     }
 
-//  5. Zmenena data - ulozeni na disk
+    //  5. Uložení stavu evidence na disk
     public static void saveDataToDisk(CookBook cookBook, Orders orders) {
         FileOperations fileOperations = new FileOperations();
         String fileNameOrders = Settings.getFileNameOrders();
@@ -151,7 +151,7 @@ public class Main {
         }
     }
 
-//  6. Opetovne nacteni dat z disku
+    //  1. Načtení stavu evidence z disku
     public static void loadDataFromDisk(CookBook cookBook, Orders orders) {
         FileOperations fileOperations = new FileOperations();
         String fileNameOrders = Settings.getFileNameOrders();
@@ -168,6 +168,7 @@ public class Main {
         }
     }
 
+    // 4. Získání informací pro management
     public static void saveTableSummaryToFile(Orders orders, int tableNumber) {
         RestaurantManager restaurantManager = new RestaurantManager();
         FileOperations fileOperations = new FileOperations();
