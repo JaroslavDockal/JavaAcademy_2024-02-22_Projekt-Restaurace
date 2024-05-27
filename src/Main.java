@@ -61,7 +61,9 @@ public class Main {
             orders.addOrder(new Order(cookBook.getDishById(dishId), quantity,tableNumber));
         } catch (RestaurantException e) {
             System.err.println("Nastala chyba při vytváření objednávky:\n" + e.getLocalizedMessage());
-        }
+        } catch (IndexOutOfBoundsException e) {
+        System.err.println("Nastala chyba při vytváření objednávky:\n" + e.getLocalizedMessage());
+    }
     }
 
     public static void createNewOrder(CookBook cookBook, Orders orders, int tableNumber, int dishId, int quantity, LocalDateTime orderedTime) {
@@ -77,6 +79,8 @@ public class Main {
         try {
             orders.get(i).setFulfilmentTime();
         } catch (RestaurantException e) {
+            System.err.println("Nastala chyba při nastavování času splnění objednávky:\n" + e.getLocalizedMessage());
+        } catch (IndexOutOfBoundsException e) {
             System.err.println("Nastala chyba při nastavování času splnění objednávky:\n" + e.getLocalizedMessage());
         }
     }
