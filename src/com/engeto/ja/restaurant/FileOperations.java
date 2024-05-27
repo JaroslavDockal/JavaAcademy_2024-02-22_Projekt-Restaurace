@@ -121,6 +121,7 @@ public class FileOperations {
         cookBook.clearDishes();
         int lineCounter = 0;
         int maxId = 0;
+        Set<Integer> usedIds = new HashSet<>();
         PriorityQueue<Integer> freeIds = new PriorityQueue<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
@@ -138,6 +139,7 @@ public class FileOperations {
                 if (id > maxId) {
                     maxId = id;
                 }
+                usedIds.add(id);
                 cookBook.addDishWithId(id, new Dish(title, price, preparationTime, image));
                 lineCounter++;
             }
@@ -148,11 +150,14 @@ public class FileOperations {
         } catch (Exception e) {
             throw new RestaurantException("Nastala chyba při načítání jídelníčku ze souboru " + fileName + " (na řádku číslo " + lineCounter + ")!\n" + e.getLocalizedMessage());
         } finally {
+            cookBook.setNextId(maxId + 1);
+            for (int i = 1; i <= maxId; i++) {
+                if (!usedIds.contains(i)) {
+                    cookBook.addFreeId(i);
+                }
+            }
             System.out.println(loadFromFileStatusMsg(lineCounter));
         }
-
-        cookBook.setNextId(maxId + 1);
-        cookBook.setFreeIds(freeIds);
     }
 
     public void saveTableSummaryToFile (StringBuilder tableSummary, String fileName) throws RestaurantException {

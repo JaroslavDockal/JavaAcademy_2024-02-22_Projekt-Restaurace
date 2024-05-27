@@ -178,8 +178,8 @@ public class CookBook {
         this.nextId = nextId;
     }
 
-    public void setFreeIds(PriorityQueue<Integer> freeIds) {
-        this.freeIds = new PriorityQueue<>(freeIds);
+    public void addFreeId(int freeIds) {
+        this.freeIds.add(freeIds);
     }
 
 }
